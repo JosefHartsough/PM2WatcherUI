@@ -1,5 +1,11 @@
 export default function DetailsPanel({ details }: any): JSX.Element {
-  const TableCell = ({ children, name }: any) => (
+  const TableCell = ({
+    children,
+    name,
+  }: {
+    children: React.ReactNode;
+    name: string;
+  }) => (
     <td
       className={`table_cell_${name}`}
       style={{ textAlign: "center", border: "1px solid", padding: "10px" }}
@@ -8,7 +14,13 @@ export default function DetailsPanel({ details }: any): JSX.Element {
     </td>
   );
 
-  const HeaderCell = ({ children, name }: any) => (
+  const HeaderCell = ({
+    children,
+    name,
+  }: {
+    children: React.ReactNode;
+    name: string;
+  }) => (
     <th
       className={`table_header_${name}`}
       style={{ width: "25%", border: "1px solid", padding: "10px" }}
@@ -35,7 +47,7 @@ export default function DetailsPanel({ details }: any): JSX.Element {
         </label>
         <div>
           <input
-            className="pm_out_log_path"
+            className="pm_script_log_path"
             style={{ width: "99%" }}
             type="text"
             readOnly
@@ -45,9 +57,9 @@ export default function DetailsPanel({ details }: any): JSX.Element {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
         <div style={{ display: "block" }}>
-          <label className="label_script_path">Output Path</label>
+          <label className="label_output_path">Output Path</label>
           <input
-            className="pm_error_log_path"
+            className="pm_output_log_path"
             style={{ width: "98%" }}
             type="text"
             readOnly
@@ -55,7 +67,7 @@ export default function DetailsPanel({ details }: any): JSX.Element {
           />
         </div>
         <div style={{ display: "block" }}>
-          <label className="label_script_path">Error Path</label>
+          <label className="label_error_path">Error Path</label>
           <input
             className="pm_error_log_path"
             style={{ width: "98%" }}

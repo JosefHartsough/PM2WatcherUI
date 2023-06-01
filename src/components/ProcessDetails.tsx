@@ -1,13 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, NavigateFunction } from "react-router-dom";
-import { describe } from "../api/getRequests";
-import { startProcess, stopProcess, restartProcess } from "../api/postRequests";
-import { deleteProcess } from "../api/deleteRequests";
-import DetailsPanel from "./DetailsPanel";
-import EnvironmentPanel from "./EnvironmentPanel";
-import LogsPanel from "./LogsPanel";
-import Button from "./Button";
+import {
+  useLocation,
+  useNavigate,
+  NavigateFunction,
+  Location,
+} from "react-router-dom";
+import {
+  describe,
+  startProcess,
+  stopProcess,
+  restartProcess,
+  deleteProcess,
+} from "../api/index";
+import {
+  DetailsPanel,
+  EnvironmentPanel,
+  LogsPanel,
+  Button,
+  NotificationsPanel,
+} from "./index";
 import { ProcessDetails as pmProcessdetails } from "../types/types";
 
 const Tabs = [
@@ -27,12 +39,16 @@ const Tabs = [
     id: 4,
     label: "Logs",
   },
+  {
+    id: 5,
+    label: "Notifications",
+  },
 ];
 
 const bytesInMb = 1024 ** 2;
 
 export default function ProcessDetails(): JSX.Element {
-  const location = useLocation();
+  const location: Location = useLocation();
   const navigate: NavigateFunction = useNavigate();
   const { pathname }: { pathname: string } = location;
   const pmId: number = parseInt(pathname.split("/")[1]);
@@ -198,6 +214,7 @@ export default function ProcessDetails(): JSX.Element {
         {selectedTab === 1 && <DetailsPanel details={details} />}
         {selectedTab === 2 && <EnvironmentPanel details={details} />}
         {selectedTab === 3 && <LogsPanel />}
+        {selectedTab === 4 && <NotificationsPanel />}
       </div>
     </main>
   );

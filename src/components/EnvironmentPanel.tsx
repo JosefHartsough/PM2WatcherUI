@@ -1,7 +1,7 @@
+// TOOD: Figure out layout and which variabels we care about
 export default function EnvironmentPanel({ details }: any) {
   const keys = Object.keys(details.env);
 
-  console.log("values", details.env);
   return (
     <div>
       <table>

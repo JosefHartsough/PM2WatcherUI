@@ -17,7 +17,7 @@ export default function Button({
       className={`btn_${variant} ${size}` + (disabled ? " disabled" : "")}
       style={{
         flex: "33.33%",
-        cursor: disabled ? "not-allowed" : undefined,
+        cursor: disabled ? "not-allowed" : "pointer",
         paddingTop: "0.5rem",
         paddingBottom: "0.5rem",
         paddingLeft: "1rem",

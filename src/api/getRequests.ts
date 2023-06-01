@@ -30,13 +30,15 @@ const describe = async (pmId: number): Promise<any> => {
   }
 };
 
-const getLogs = async (outputPath: string): Promise<any> => {
+const getLogs = async (process: number): Promise<any> => {
+  console.log("getLogs");
   const { data, status } = await client.get("/logs", {
     params: {
-      outputPath,
+      process,
     },
   });
-  console.log("log data", data);
+  const { logs } = data;
+  return logs;
 };
 
-export { listProcesses, describe };
+export { listProcesses, describe, getLogs };
