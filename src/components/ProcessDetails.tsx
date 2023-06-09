@@ -168,6 +168,7 @@ export default function ProcessDetails(): JSX.Element {
               onClick={() => setSelectedTab(index)}
               style={{
                 padding: "0.5rem 0.75rem",
+                cursor: "pointer",
                 fontWeight: 700,
                 fontSize: "1.5em",
                 borderBottom:

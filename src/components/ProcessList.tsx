@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { listProcesses } from "../api/getRequests";
 import { ProcessListData } from "../types/types";
+import { bytesInMb } from "../utils/helpers";
 
 // TODO: Move all styling to css modules
 
@@ -120,8 +121,10 @@ export default function ProcessList(): JSX.Element {
                 <TableCell name={"status"}>{p.status}</TableCell>
                 <TableCell name={"uptime"}>{p.uptime}</TableCell>
                 <TableCell name={"restarts"}>{p.restarts}</TableCell>
-                <TableCell name={"cpu"}>{p.cpu}</TableCell>
-                <TableCell name={"memory"}>{p.memory}</TableCell>
+                <TableCell name={"cpu"}>{p.cpu}%</TableCell>
+                <TableCell name={"memory"}>
+                  {(p.memory! / bytesInMb).toFixed(2)}mb
+                </TableCell>
               </tr>
             ))}
           </thead>
