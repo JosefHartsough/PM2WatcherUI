@@ -31,7 +31,6 @@ const describe = async (pmId: number): Promise<any> => {
 };
 
 const getLogs = async (process: number): Promise<any> => {
-  console.log("getLogs");
   const { data, status } = await client.get("/logs", {
     params: {
       process,
@@ -41,4 +40,8 @@ const getLogs = async (process: number): Promise<any> => {
   return logs;
 };
 
-export { listProcesses, describe, getLogs };
+const getErrorLogs = async (): Promise<any> => {
+  const { data } = await client.get("/errorlogs");
+};
+
+export { listProcesses, describe, getLogs, getErrorLogs };

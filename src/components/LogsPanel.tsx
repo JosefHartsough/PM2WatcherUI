@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { getLogs } from "../api/index";
+import { getLogs, getErrorLogs } from "../api/index";
 
 export default function LogsPanel() {
   const [logData, setLogData] = useState<string>();
+  const [errorLogData, setErrorLogData] = useState<string>();
   useEffect(() => {
     async function fetchData() {
       const result = await getLogs(1);
-      console.log("result", result);
+      // const errorLog = await getErrorLogs();
       setLogData(result);
-      // ...
     }
     fetchData();
   }, []);
